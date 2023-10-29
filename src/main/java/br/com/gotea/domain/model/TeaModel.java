@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-public class Tea {
+public class TeaModel {
 
     @Id
     @GeneratedValue(generator = "UUID")

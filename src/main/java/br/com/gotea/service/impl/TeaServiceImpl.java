@@ -1,7 +1,7 @@
 package br.com.gotea.service.impl;
 
 import br.com.gotea.controller.dto.request.TeaRequestDto;
-import br.com.gotea.domain.model.Tea;
+import br.com.gotea.domain.model.TeaModel;
 import br.com.gotea.domain.repository.TeaRepository;
 import br.com.gotea.service.TeaService;
 import lombok.RequiredArgsConstructor;
@@ -17,20 +17,20 @@ public class TeaServiceImpl implements TeaService {
     private final TeaRepository repository;
 
     @Override
-    public List<Tea> findAll() {
+    public List<TeaModel> findAll() {
         return this.repository.findAll();
     }
 
     @Override
-    public Tea findById(UUID id) {
+    public TeaModel findById(UUID id) {
         return this.repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tea has not exists"));
     }
 
     @Override
-    public Tea createTeaModel(TeaRequestDto data) {
+    public TeaModel createTeaModel(TeaRequestDto data) {
 
-        var newTea = new Tea();
+        var newTea = new TeaModel();
 
         newTea.setName(data.getName());
         newTea.setDescription(data.getDescription());
@@ -49,7 +49,7 @@ public class TeaServiceImpl implements TeaService {
     }
 
     @Override
-    public Tea updateTeaModel(UUID id, TeaRequestDto data) {
+    public TeaModel updateTeaModel(UUID id, TeaRequestDto data) {
 
         var updatedTea = findById(id);
 

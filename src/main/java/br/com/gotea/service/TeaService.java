@@ -1,20 +1,20 @@
 package br.com.gotea.service;
 
 import br.com.gotea.controller.dto.request.TeaRequestDto;
-import br.com.gotea.domain.model.Tea;
+import br.com.gotea.domain.model.TeaModel;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface TeaService {
 
-    List<Tea> findAll();
+    List<TeaModel> findAll();
 
-    Tea findById(UUID id);
+    TeaModel findById(UUID id);
 
-    Tea createTeaModel(TeaRequestDto data);
+    TeaModel createTeaModel(TeaRequestDto data);
 
-    Tea updateTeaModel(UUID id, TeaRequestDto data);
+    TeaModel updateTeaModel(UUID id, TeaRequestDto data);
 
     void deleteTeaModel(UUID id);
 }
