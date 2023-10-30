@@ -42,6 +42,7 @@ public class TeaController {
         return new ResponseEntity<>(tea, HttpStatus.I_AM_A_TEAPOT);
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTea(@PathVariable UUID id) {
         this.teaService.deleteTeaModel(id);
         return ResponseEntity.noContent().build();
