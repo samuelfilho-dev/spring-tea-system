@@ -1,6 +1,7 @@
 package br.com.gotea.domain.model;
 
 import br.com.gotea.domain.enums.RoleModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class UserModel implements UserDetails {
     private String email;
 
     @ToString.Exclude
+    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)
