@@ -1,9 +1,11 @@
 package br.com.gotea.service.impl;
 
+import br.com.gotea.domain.model.UserModel;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -23,11 +25,14 @@ public class JwtUtilServiceImpl {
         return Keys.hmacShaKeyFor(this.secret.getBytes());
     }
 
-    private String generateToken(String username) {
+    public String generateToken(UserModel user) {
         var key = getKeyBySecret();
 
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(user.getEmail())
+                .claim("firstName", user.getFirstName())
+                .claim("lastName", user.getLastName())
+                .claim("role", user.getRoleModel())
                 .setExpiration(new Date(System.currentTimeMillis() + this.expiration))
                 .signWith(key)
                 .compact();
@@ -38,14 +43,14 @@ public class JwtUtilServiceImpl {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }
 
-    private String getUsername(String token) {
+    public String getUsername(String token) {
         var claims = getClaims(token);
         return claims.getSubject();
     }
 
     public boolean isValidToken(String token) {
 
-        Claims claims = getClaims(token);
+        var claims = getClaims(token);
 
         if (Objects.nonNull(claims)) {
 

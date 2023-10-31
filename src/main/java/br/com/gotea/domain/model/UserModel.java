@@ -1,6 +1,6 @@
 package br.com.gotea.domain.model;
 
-import br.com.gotea.domain.enums.Role;
+import br.com.gotea.domain.enums.RoleModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,11 +34,11 @@ public class UserModel implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleModel roleModel;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.role == Role.ROLE_ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        if (this.roleModel == RoleModel.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 

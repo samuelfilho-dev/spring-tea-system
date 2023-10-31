@@ -39,7 +39,7 @@ public class UserModelServiceImpl implements UserModelService {
         newUserModel.setLastName(data.getLastName());
         newUserModel.setEmail(data.getEmail());
         newUserModel.setPassword(passwordEncoder.encode(data.getPassword()));
-        newUserModel.setRole(data.getRole());
+        newUserModel.setRoleModel(data.getRoleModel());
 
         this.repository.save(newUserModel);
 
@@ -54,7 +54,7 @@ public class UserModelServiceImpl implements UserModelService {
         dbUserModel.setFirstName(data.getFirstName());
         dbUserModel.setLastName(data.getLastName());
         dbUserModel.setEmail(data.getEmail());
-        dbUserModel.setRole(data.getRole());
+        dbUserModel.setRoleModel(data.getRoleModel());
 
         this.repository.save(dbUserModel);
 

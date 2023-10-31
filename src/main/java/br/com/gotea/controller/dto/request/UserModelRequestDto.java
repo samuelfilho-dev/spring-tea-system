@@ -1,6 +1,6 @@
 package br.com.gotea.controller.dto.request;
 
-import br.com.gotea.domain.enums.Role;
+import br.com.gotea.domain.enums.RoleModel;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -16,5 +16,5 @@ public class UserModelRequestDto {
 
     private String password;
 
-    private Role role;
+    private RoleModel roleModel;
 }
