@@ -25,14 +25,11 @@ public class JwtUtilServiceImpl {
         return Keys.hmacShaKeyFor(this.secret.getBytes());
     }
 
-    public String generateToken(UserModel user) {
+    public String generateToken(String username) {
         var key = getKeyBySecret();
 
         return Jwts.builder()
-                .setSubject(user.getEmail())
-                .claim("firstName", user.getFirstName())
-                .claim("lastName", user.getLastName())
-                .claim("role", user.getRoleModel())
+                .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + this.expiration))
                 .signWith(key)
                 .compact();
