@@ -2,10 +2,8 @@ package br.com.gotea.controller;
 
 import br.com.gotea.controller.dto.request.LoginRequestDto;
 import br.com.gotea.controller.dto.response.AuthResponseDto;
-import br.com.gotea.domain.repository.UserModelRepository;
 import br.com.gotea.service.impl.JwtUtilServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
